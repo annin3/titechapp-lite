@@ -13,33 +13,35 @@ struct ContentView: View {
         
         HStack {
             Rectangle()
-                .frame(width: 3.0, height: 70.0)
+                .frame(width: 5.0, height: 100.0)
                 .foregroundColor(Color("main"))
-            VStack {
+            VStack(spacing: 21) {
                 Text("00:00")
                     .font(.footnote)
                     .foregroundColor(Color("textMain"))
                 Text("23:59")
                     .font(.footnote)
                     .foregroundColor(Color("textSub"))
-                    .padding(.top)
             }
             .padding(.leading)
-            VStack(alignment: .leading) {
-                Text("電気的")
+            VStack(alignment: .leading, spacing: 21) {
+                Text("電気的aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                     .font(.system(size: 15))
                     .foregroundColor(Color("textMain"))
-                Text("week0")
+                    .lineLimit(1)
+                Text("week0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                     .font(.system(size: 13))
                     .foregroundColor(Color("textSub"))
-                    .padding(.top)
+                    .lineLimit(1)
             }
             .padding(.leading)
             Spacer()
-            Text("W000")
+            Text("W000aaaaaaaa")
                 .font(.system(size: 14))
                 .foregroundColor(Color("main"))
-            .padding()
+                .lineLimit(2)
+                .frame(width: 44)
+                .padding()
         }
     }
 }

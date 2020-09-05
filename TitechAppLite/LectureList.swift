@@ -10,11 +10,14 @@ import SwiftUI
 
 struct LectureList: View {
     var body: some View {
-        List {
-            ForEach(1..<10) {_ in
-                    ContentView()
+        NavigationView {
+            List {
+                ForEach(0..<10) {_ in
+                        ContentView()
+                }
+                .navigationBarTitle(Text("スケジュール"))
+                .listRowInsets(EdgeInsets())
             }
-        .listRowInsets(EdgeInsets())
         }
     }
 }
