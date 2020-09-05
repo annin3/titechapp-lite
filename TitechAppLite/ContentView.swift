@@ -15,7 +15,6 @@ struct ContentView: View {
             Rectangle()
                 .frame(width: 3.0, height: 70.0)
                 .foregroundColor(Color("main"))
-            Spacer()
             VStack {
                 Text("00:00")
                     .font(.footnote)
@@ -23,21 +22,24 @@ struct ContentView: View {
                 Text("23:59")
                     .font(.footnote)
                     .foregroundColor(Color("textSub"))
+                    .padding(.top)
             }
-            Spacer()
+            .padding(.leading)
             VStack(alignment: .leading) {
-                Text("電気的モデリングとシミュレーション")
+                Text("電気的")
                     .font(.system(size: 15))
                     .foregroundColor(Color("textMain"))
                 Text("week0")
                     .font(.system(size: 13))
                     .foregroundColor(Color("textSub"))
+                    .padding(.top)
             }
+            .padding(.leading)
             Spacer()
             Text("W000")
                 .font(.system(size: 14))
                 .foregroundColor(Color("main"))
-            Spacer()
+            .padding()
         }
     }
 }
