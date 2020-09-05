@@ -10,33 +10,30 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        
-        HStack {
+        HStack(spacing: 12) {
             Rectangle()
                 .frame(width: 5.0, height: 100.0)
                 .foregroundColor(Color("main"))
             VStack(spacing: 21) {
                 Text("00:00")
-                    .font(.footnote)
+                    .font(.system(size: 13))
                     .foregroundColor(Color("textMain"))
                 Text("23:59")
-                    .font(.footnote)
+                    .font(.system(size: 13))
                     .foregroundColor(Color("textSub"))
             }
-            .padding(.leading)
             VStack(alignment: .leading, spacing: 21) {
-                Text("電気的aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                Text("電気的")
                     .font(.system(size: 15))
                     .foregroundColor(Color("textMain"))
                     .lineLimit(1)
-                Text("week0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                Text("week0")
                     .font(.system(size: 13))
                     .foregroundColor(Color("textSub"))
                     .lineLimit(1)
             }
-            .padding(.leading)
             Spacer()
-            Text("W000aaaaaaaa")
+            Text("W000")
                 .font(.system(size: 14))
                 .foregroundColor(Color("main"))
                 .lineLimit(2)

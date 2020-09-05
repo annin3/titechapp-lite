@@ -12,7 +12,7 @@ struct LectureList: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(0..<10) {_ in
+                ForEach(0..<10) { _ in
                         ContentView()
                 }
                 .navigationBarTitle("スケジュール", displayMode: .inline)
