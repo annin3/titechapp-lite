@@ -13,6 +13,7 @@
 		15A9540F25036485002D26E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A9540E25036485002D26E3 /* Assets.xcassets */; };
 		15A9541225036485002D26E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A9541125036485002D26E3 /* Preview Assets.xcassets */; };
 		15A9541525036485002D26E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A9541325036485002D26E3 /* LaunchScreen.storyboard */; };
+		15A9541D25037125002D26E3 /* LectureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9541C25037125002D26E3 /* LectureList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		15A9541125036485002D26E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		15A9541425036485002D26E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15A9541625036485002D26E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15A9541C25037125002D26E3 /* LectureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				15A9540825036484002D26E3 /* AppDelegate.swift */,
 				15A9540A25036484002D26E3 /* SceneDelegate.swift */,
 				15A9540C25036484002D26E3 /* ContentView.swift */,
+				15A9541C25037125002D26E3 /* LectureList.swift */,
 				15A9540E25036485002D26E3 /* Assets.xcassets */,
 				15A9541325036485002D26E3 /* LaunchScreen.storyboard */,
 				15A9541625036485002D26E3 /* Info.plist */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15A9541D25037125002D26E3 /* LectureList.swift in Sources */,
 				15A9540925036484002D26E3 /* AppDelegate.swift in Sources */,
 				15A9540B25036484002D26E3 /* SceneDelegate.swift in Sources */,
 				15A9540D25036484002D26E3 /* ContentView.swift in Sources */,
