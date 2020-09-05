@@ -14,25 +14,29 @@ struct ContentView: View {
         HStack {
             Rectangle()
                 .frame(width: 3.0, height: 70.0)
-                .foregroundColor(.red)
+                .foregroundColor(Color("main"))
             Spacer()
             VStack {
                 Text("00:00")
                     .font(.footnote)
+                    .foregroundColor(Color("textMain"))
                 Text("23:59")
                     .font(.footnote)
+                    .foregroundColor(Color("textSub"))
             }
             Spacer()
             VStack(alignment: .leading) {
                 Text("電気的モデリングとシミュレーション")
-                    .font(.subheadline)
+                    .font(.system(size: 15))
+                    .foregroundColor(Color("textMain"))
                 Text("week0")
-                    .font(.footnote)
+                    .font(.system(size: 13))
+                    .foregroundColor(Color("textSub"))
             }
             Spacer()
             Text("W000")
-                .font(.footnote)
-                .foregroundColor(.red)
+                .font(.system(size: 14))
+                .foregroundColor(Color("main"))
             Spacer()
         }
     }
