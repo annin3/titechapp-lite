@@ -14,8 +14,9 @@ struct LectureList: View {
             List {
                 ForEach(0..<10) { _ in
                     Section(header: DataRow()){
-                        ContentView()
-                        ContentView()
+                        ForEach(0..<2) { _ in
+                            ContentView()
+                        }
                     }
                 }
                 .navigationBarTitle("スケジュール", displayMode: .inline)

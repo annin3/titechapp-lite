@@ -14,11 +14,9 @@ struct DataRow: View {
             Rectangle()
                 .frame(width: 5.0, height: 55)
                 .foregroundColor(Color("grayMain"))
-            HStack(spacing: 21) {
-                Text("9月28日 土曜日")
-                    .font(.system(size: 13))
-                    .foregroundColor(Color("textSub"))
-            }
+            Text("9月28日 土曜日")
+                .font(.system(size: 13))
+                .foregroundColor(Color("textSub"))
             Spacer()
         }
         .background(Color("backgroundMain"))
@@ -27,6 +25,6 @@ struct DataRow: View {
 
 struct DataRow_Previews: PreviewProvider {
     static var previews: some View {
-        DataRow()
+        DataRow().previewLayout(.sizeThatFits)
     }
 }
