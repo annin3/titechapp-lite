@@ -13,7 +13,10 @@ struct LectureList: View {
         NavigationView {
             List {
                 ForEach(0..<10) { _ in
+                    Section(header: DataRow()){
                         ContentView()
+                        ContentView()
+                    }
                 }
                 .navigationBarTitle("スケジュール", displayMode: .inline)
                 .listRowInsets(EdgeInsets())
