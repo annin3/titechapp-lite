@@ -14,8 +14,8 @@ class LectureListViewModel: ObservableObject {
     @Published var lecturelist: [LectureData] = [
         LectureData(
             id: 1000,
-            data: "10月３日",
-            lec: [
+            date: "10月３日",
+            lectures: [
                 Lecture(
                     id: 100,
                     startTime: "00:00",
@@ -28,8 +28,8 @@ class LectureListViewModel: ObservableObject {
         ),
         LectureData(
             id: 1001,
-            data: "10月4日",
-            lec: [
+            date: "10月4日",
+            lectures: [
                 Lecture(
                     id: 101,
                     startTime: "00:00",
@@ -50,8 +50,8 @@ class LectureListViewModel: ObservableObject {
         ),
         LectureData(
             id: 1002,
-            data: "10月5日",
-            lec: []
+            date: "10月5日",
+            lectures: []
         )
     ]
 }

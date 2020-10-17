@@ -15,9 +15,9 @@ struct LectureList: View {
         NavigationView {
             List {
                 ForEach(viewModel.lecturelist) { lecture in
-                    Section(header: DataRow(data: lecture.data)) {
-                        ForEach(lecture.lec) { lec in
-                            ContentView(
+                    Section(header: DateRow(date: lecture.date)) {
+                        ForEach(lecture.lectures) { lec in
+                            LectureRow(
                                 startTime: lec.startTime,
                                 finishTime: lec.finishTime,
                                 title: lec.title,

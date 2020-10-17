@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LectureRow: View {
     let startTime: String
     let finishTime: String
     let title: String
@@ -51,7 +51,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(
+        LectureRow(
             startTime: "00:00",
             finishTime: "23:59",
             title: "電気的",

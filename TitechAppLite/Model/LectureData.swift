@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct LectureData: Decodable, Identifiable {
+struct LectureData: Identifiable {
     var id: Int
-    let data: String
-    let lec: [Lecture]
+    let date: String
+    let lectures: [Lecture]
 }

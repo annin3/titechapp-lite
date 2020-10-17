@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Lecture: Decodable, Identifiable {
+struct Lecture: Identifiable {
     let id: Int
     let startTime: String
     let finishTime: String

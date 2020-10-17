@@ -12,12 +12,12 @@
 		153A7F762528702500FF96BB /* LectureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A7F752528702500FF96BB /* LectureData.swift */; };
 		15A9540925036484002D26E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540825036484002D26E3 /* AppDelegate.swift */; };
 		15A9540B25036484002D26E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540A25036484002D26E3 /* SceneDelegate.swift */; };
-		15A9540D25036484002D26E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540C25036484002D26E3 /* ContentView.swift */; };
+		15A9540D25036484002D26E3 /* LectureRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540C25036484002D26E3 /* LectureRow.swift */; };
 		15A9540F25036485002D26E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A9540E25036485002D26E3 /* Assets.xcassets */; };
 		15A9541225036485002D26E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A9541125036485002D26E3 /* Preview Assets.xcassets */; };
 		15A9541525036485002D26E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A9541325036485002D26E3 /* LaunchScreen.storyboard */; };
 		15A9541D25037125002D26E3 /* LectureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9541C25037125002D26E3 /* LectureList.swift */; };
-		15DBC0F0251F19A60074B713 /* DataRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DBC0EF251F19A60074B713 /* DataRow.swift */; };
+		15DBC0F0251F19A60074B713 /* DateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DBC0EF251F19A60074B713 /* DateRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +27,13 @@
 		15A9540525036484002D26E3 /* TitechAppLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TitechAppLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A9540825036484002D26E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A9540A25036484002D26E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		15A9540C25036484002D26E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		15A9540C25036484002D26E3 /* LectureRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureRow.swift; sourceTree = "<group>"; };
 		15A9540E25036485002D26E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15A9541125036485002D26E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		15A9541425036485002D26E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15A9541625036485002D26E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15A9541C25037125002D26E3 /* LectureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureList.swift; sourceTree = "<group>"; };
-		15DBC0EF251F19A60074B713 /* DataRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRow.swift; sourceTree = "<group>"; };
+		15DBC0EF251F19A60074B713 /* DateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +51,8 @@
 			isa = PBXGroup;
 			children = (
 				15A9541C25037125002D26E3 /* LectureList.swift */,
-				15A9540C25036484002D26E3 /* ContentView.swift */,
-				15DBC0EF251F19A60074B713 /* DataRow.swift */,
+				15A9540C25036484002D26E3 /* LectureRow.swift */,
+				15DBC0EF251F19A60074B713 /* DateRow.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,10 +188,10 @@
 				15A9541D25037125002D26E3 /* LectureList.swift in Sources */,
 				15A9540925036484002D26E3 /* AppDelegate.swift in Sources */,
 				153A7F762528702500FF96BB /* LectureData.swift in Sources */,
-				15DBC0F0251F19A60074B713 /* DataRow.swift in Sources */,
+				15DBC0F0251F19A60074B713 /* DateRow.swift in Sources */,
 				15A9540B25036484002D26E3 /* SceneDelegate.swift in Sources */,
 				153A7F7225286BFF00FF96BB /* Lecture.swift in Sources */,
-				15A9540D25036484002D26E3 /* ContentView.swift in Sources */,
+				15A9540D25036484002D26E3 /* LectureRow.swift in Sources */,
 				153A7F6C25285BE700FF96BB /* LectureListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

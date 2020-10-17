@@ -8,15 +8,15 @@
 
 import SwiftUI
 
-struct DataRow: View {
-    let data: String
+struct DateRow: View {
+    let date: String
     
     var body: some View {
         HStack(spacing: 12) {
             Rectangle()
                 .frame(width: 5.0, height: 55)
                 .foregroundColor(Color("grayMain"))
-            Text(data)
+            Text(date)
                 .font(.system(size: 13))
                 .foregroundColor(Color("textSub"))
             Spacer()
@@ -27,8 +27,8 @@ struct DataRow: View {
 
 struct DataRow_Previews: PreviewProvider {
     static var previews: some View {
-        DataRow(
-            data: "10月3日 土曜日"
+        DateRow(
+            date: "10月3日 土曜日"
         ).previewLayout(.sizeThatFits)
     }
 }
