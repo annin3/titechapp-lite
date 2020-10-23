@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+struct iCalLecture: Identifiable {
+    let id: String
+    let startTime: String
+    let endTime: String
+    let summary: String
+    let description: String
+    let location: String
+}

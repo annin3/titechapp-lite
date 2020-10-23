@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1502721F253AC2B200F3D37A /* iCalResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502721E253AC2B200F3D37A /* iCalResponseParser.swift */; };
 		153A7F6C25285BE700FF96BB /* LectureListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A7F6B25285BE700FF96BB /* LectureListViewModel.swift */; };
 		153A7F7225286BFF00FF96BB /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A7F7125286BFF00FF96BB /* Lecture.swift */; };
 		153A7F762528702500FF96BB /* LectureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A7F752528702500FF96BB /* LectureData.swift */; };
@@ -18,9 +19,11 @@
 		15A9541525036485002D26E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A9541325036485002D26E3 /* LaunchScreen.storyboard */; };
 		15A9541D25037125002D26E3 /* LectureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9541C25037125002D26E3 /* LectureList.swift */; };
 		15DBC0F0251F19A60074B713 /* DateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DBC0EF251F19A60074B713 /* DateRow.swift */; };
+		15E7944925413FDC00D502F1 /* iCalLecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E7944825413FDC00D502F1 /* iCalLecture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1502721E253AC2B200F3D37A /* iCalResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalResponseParser.swift; sourceTree = "<group>"; };
 		153A7F6B25285BE700FF96BB /* LectureListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListViewModel.swift; sourceTree = "<group>"; };
 		153A7F7125286BFF00FF96BB /* Lecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		153A7F752528702500FF96BB /* LectureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureData.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		15A9541625036485002D26E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15A9541C25037125002D26E3 /* LectureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureList.swift; sourceTree = "<group>"; };
 		15DBC0EF251F19A60074B713 /* DateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRow.swift; sourceTree = "<group>"; };
+		15E7944825413FDC00D502F1 /* iCalLecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalLecture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15027221253AC2B800F3D37A /* ResponseParser */ = {
+			isa = PBXGroup;
+			children = (
+				1502721E253AC2B200F3D37A /* iCalResponseParser.swift */,
+			);
+			path = ResponseParser;
+			sourceTree = "<group>";
+		};
 		153A7F6925285B5200FF96BB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +82,7 @@
 			children = (
 				153A7F7125286BFF00FF96BB /* Lecture.swift */,
 				153A7F752528702500FF96BB /* LectureData.swift */,
+				15E7944825413FDC00D502F1 /* iCalLecture.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -93,6 +106,7 @@
 		15A9540725036484002D26E3 /* TitechAppLite */ = {
 			isa = PBXGroup;
 			children = (
+				15027221253AC2B800F3D37A /* ResponseParser */,
 				153A7F6F25286BDC00FF96BB /* Model */,
 				15A9540825036484002D26E3 /* AppDelegate.swift */,
 				15A9540A25036484002D26E3 /* SceneDelegate.swift */,
@@ -191,6 +205,8 @@
 				15DBC0F0251F19A60074B713 /* DateRow.swift in Sources */,
 				15A9540B25036484002D26E3 /* SceneDelegate.swift in Sources */,
 				153A7F7225286BFF00FF96BB /* Lecture.swift in Sources */,
+				1502721F253AC2B200F3D37A /* iCalResponseParser.swift in Sources */,
+				15E7944925413FDC00D502F1 /* iCalLecture.swift in Sources */,
 				15A9540D25036484002D26E3 /* LectureRow.swift in Sources */,
 				153A7F6C25285BE700FF96BB /* LectureListViewModel.swift in Sources */,
 			);

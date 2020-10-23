@@ -8,16 +8,12 @@
 
 import Foundation
 
-struct iCalLecture {
-    let DTSTAMP: Int
-    let DTSTART: String
-    let DTEND: String
-    let LOCATION: String
-    let DESCRIPTION: String
-    let SUMMARY: String
-    let UID: String
-    let TRANSP: String
+struct iCalLectureData: Identifiable {
+    let id: String
+    let date: String
+    let lectures: [iCalLecture]
 }
+
 
 
 struct iCalResponseParser {
@@ -27,8 +23,82 @@ struct iCalResponseParser {
         }
         
         let arr = Array(str.components(separatedBy: "BEGIN:VEVENT").dropFirst())
+        
+        var date: String = ""
+        var dataJ: String = ""
+        
+        var startTime: String = ""
+        var endTime: String = ""
+        var location: String = ""
+        var description: String = ""
+        var summary: String = ""
+        var id: String = ""
+        
         for lecture in arr {
-            print(lecture)
+            lecture.enumerateLines{
+                line, stop in
+                if line.contains("DTSTART") { // -> true
+                    startTime = "\(line)"
+                    startTime = String(startTime.suffix(6))
+                    startTime = String(startTime.prefix(4))
+                    let insertIdx = startTime.index(startTime.startIndex, offsetBy: 2)
+                    startTime.insert(contentsOf: ":", at: insertIdx)
+
+                    date = "\(line)"
+                    date = String(date.dropFirst(24))
+                    date = String(date.prefix(8))
+                    
+                    print(date)
+                    print(startTime)
+                }
+                if line.contains("DTEND") { // -> true
+                    endTime = "\(line)"
+                    endTime = String(endTime.suffix(6))
+                    endTime = String(endTime.prefix(4))
+                    let insertIdx = endTime.index(endTime.startIndex, offsetBy: 2)
+                    endTime.insert(contentsOf: ":", at: insertIdx)
+                    print(endTime)
+                }
+                if line.contains("LOCATION") { // -> true
+                    location = "\(line)"
+                    location = String(location.dropFirst(9))
+                    print(location)
+                    
+                }
+                if line.contains("DESCRIPTION") { // -> true
+                    description = "\(line)"
+                    description = String(description.dropFirst(12))
+                    print(description)
+                }
+                if line.contains("SUMMARY") { // -> true
+                    summary = "\(line)"
+                    summary = String(summary.dropFirst(8))
+                    print(summary)
+                }
+                if line.contains("UID") { // -> true
+                    id = "\(line)"
+                    id = String(id.dropFirst(4))
+                    id = String(id.replacingOccurrences(of:"@ocw.titech.ac.jp", with:""))
+                    print(id)
+                }
+                if line.contains("END:VEVENT") { // -> tru
+                    print()
+                    iCalLectureData(
+                        id: date,
+                        date: date,
+                        lectures: [
+                            iCalLecture(
+                                id: id,
+                                startTime: startTime,
+                                endTime: endTime,
+                                summary: summary,
+                                description: description,
+                                location: location
+                            )
+                        ]
+                    )
+                }
+            }
         }
     }
 }
@@ -84,8 +154,6 @@ SUMMARY:工学リテラシーIII f【講義室変更】
 UID:202024088_1a6ffa1bc9aeccad44738b494aa1c9f8@ocw.titech.ac.jp
 TRANSP:OPAQUE
 END:VEVENT
-
-
 BEGIN:VEVENT
 DTSTAMP:20201017T145108
 DTSTART;TZID=Asia/Tokyo:20201005T085000
