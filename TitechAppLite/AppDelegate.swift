@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        iCalResponseParser.parse(data: iCaldata.data(using: .utf8)!)
+        ICalResponseParser.parse(data: iCaldata.data(using: .utf8)!)
         return true
     }
 

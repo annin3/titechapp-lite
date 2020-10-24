@@ -8,98 +8,101 @@
 
 import Foundation
 
-struct iCalLectureData: Identifiable {
+struct ICalLecture: Identifiable {
     let id: String
-    let date: String
-    let lectures: [iCalLecture]
+    let startDate: Date
+    let endDate: Date
+    let summary: String
+    let description: String
+    let location: String
 }
 
 
 
-struct iCalResponseParser {
-    static func parse (data: Data) {
+
+struct ICalResponseParser {
+    static func parse (data: Data) -> [ICalLecture] {
         guard let str = String(data: data, encoding: .utf8) else {
-            return
+            return []
         }
         
         let arr = Array(str.components(separatedBy: "BEGIN:VEVENT").dropFirst())
         
-        var date: String = ""
-        var dataJ: String = ""
-        
-        var startTime: String = ""
-        var endTime: String = ""
+        var text: String = ""
+        var startDate = Date()
+        var endDate = Date()
         var location: String = ""
         var description: String = ""
         var summary: String = ""
         var id: String = ""
         
+        var iCalLectures: [ICalLecture] = []
+        
         for lecture in arr {
-            lecture.enumerateLines{
+            lecture.enumerateLines {
                 line, stop in
-                if line.contains("DTSTART") { // -> true
-                    startTime = "\(line)"
-                    startTime = String(startTime.suffix(6))
-                    startTime = String(startTime.prefix(4))
-                    let insertIdx = startTime.index(startTime.startIndex, offsetBy: 2)
-                    startTime.insert(contentsOf: ":", at: insertIdx)
-
-                    date = "\(line)"
-                    date = String(date.dropFirst(24))
-                    date = String(date.prefix(8))
+                if line.hasPrefix("DTSTART") { // -> true
+                    text = "\(line)"
+                    text = text.replacingOccurrences(of:"DTSTART;TZID=Asia/Tokyo:", with:"")
                     
-                    print(date)
-                    print(startTime)
-                }
-                if line.contains("DTEND") { // -> true
-                    endTime = "\(line)"
-                    endTime = String(endTime.suffix(6))
-                    endTime = String(endTime.prefix(4))
-                    let insertIdx = endTime.index(endTime.startIndex, offsetBy: 2)
-                    endTime.insert(contentsOf: ":", at: insertIdx)
-                    print(endTime)
-                }
-                if line.contains("LOCATION") { // -> true
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+                    dateFormatter.dateFormat = "yyyyMMdd'T'HHmmss"
+                    if let date = dateFormatter.date(from: text) {//Date?を除外
+                        startDate = date
+                    }
+                    print(startDate)
+                    
+                } else if line.hasPrefix("DTEND") { // -> true
+                    text = "\(line)"
+                    text = text.replacingOccurrences(of:"DTEND;TZID=Asia/Tokyo:", with:"")
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+                    dateFormatter.dateFormat = "yyyyMMdd'T'HHmmss"
+                    if let date = dateFormatter.date(from: text) {
+                        endDate = date
+                    }
+                    print(endDate)
+                    
+                } else if line.hasPrefix("LOCATION") { // -> true
                     location = "\(line)"
-                    location = String(location.dropFirst(9))
+                    location = location.replacingOccurrences(of:"LOCATION:", with:"")
                     print(location)
                     
-                }
-                if line.contains("DESCRIPTION") { // -> true
+                } else if line.hasPrefix("DESCRIPTION") { // -> true
                     description = "\(line)"
-                    description = String(description.dropFirst(12))
+                    description = description.replacingOccurrences(of:"DESCRIPTION:", with:"")
                     print(description)
-                }
-                if line.contains("SUMMARY") { // -> true
+                    
+                } else if line.hasPrefix("SUMMARY") { // -> true
                     summary = "\(line)"
-                    summary = String(summary.dropFirst(8))
+                    summary = summary.replacingOccurrences(of:"SUMMARY:", with:"")
                     print(summary)
-                }
-                if line.contains("UID") { // -> true
+                    
+                } else if line.hasPrefix("UID") { // -> true
                     id = "\(line)"
-                    id = String(id.dropFirst(4))
-                    id = String(id.replacingOccurrences(of:"@ocw.titech.ac.jp", with:""))
+                    id = id.replacingOccurrences(of:"UID:", with:"")
+                    id = id.replacingOccurrences(of:"@ocw.titech.ac.jp", with:"")
                     print(id)
-                }
-                if line.contains("END:VEVENT") { // -> tru
+                    
+                } else if line.hasPrefix("END:VEVENT") { // -> true
                     print()
-                    iCalLectureData(
-                        id: date,
-                        date: date,
-                        lectures: [
-                            iCalLecture(
-                                id: id,
-                                startTime: startTime,
-                                endTime: endTime,
-                                summary: summary,
-                                description: description,
-                                location: location
-                            )
-                        ]
+                    iCalLectures.append(
+                        ICalLecture(
+                            id: id,
+                            startDate: startDate,
+                            endDate: endDate,
+                            summary: summary,
+                            description: description,
+                            location: location
+                        )
                     )
                 }
             }
         }
+        print(iCalLectures)
+        return iCalLectures
     }
 }
 
