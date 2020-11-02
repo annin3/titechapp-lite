@@ -18,8 +18,6 @@ struct ICalLecture: Identifiable {
 }
 
 
-
-
 struct ICalResponseParser {
     static func parse (data: Data) -> [ICalLecture] {
         guard let str = String(data: data, encoding: .utf8) else {
@@ -51,7 +49,6 @@ struct ICalResponseParser {
                     if let date = dateFormatter.date(from: text) {//Date?を除外
                         startDate = date
                     }
-                    print(startDate)
                     
                 } else if line.hasPrefix("DTEND") { // -> true
                     text = "\(line)"
@@ -63,31 +60,25 @@ struct ICalResponseParser {
                     if let date = dateFormatter.date(from: text) {
                         endDate = date
                     }
-                    print(endDate)
                     
                 } else if line.hasPrefix("LOCATION") { // -> true
                     location = "\(line)"
                     location = location.replacingOccurrences(of:"LOCATION:", with:"")
-                    print(location)
                     
                 } else if line.hasPrefix("DESCRIPTION") { // -> true
                     description = "\(line)"
                     description = description.replacingOccurrences(of:"DESCRIPTION:", with:"")
-                    print(description)
                     
                 } else if line.hasPrefix("SUMMARY") { // -> true
                     summary = "\(line)"
                     summary = summary.replacingOccurrences(of:"SUMMARY:", with:"")
-                    print(summary)
                     
                 } else if line.hasPrefix("UID") { // -> true
                     id = "\(line)"
                     id = id.replacingOccurrences(of:"UID:", with:"")
                     id = id.replacingOccurrences(of:"@ocw.titech.ac.jp", with:"")
-                    print(id)
                     
                 } else if line.hasPrefix("END:VEVENT") { // -> true
-                    print()
                     iCalLectures.append(
                         ICalLecture(
                             id: id,
@@ -101,9 +92,9 @@ struct ICalResponseParser {
                 }
             }
         }
-        print(iCalLectures)
         return iCalLectures
     }
+    
 }
 
 
