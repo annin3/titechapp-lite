@@ -17,12 +17,14 @@ struct ICalResponseParser {
         let arr = Array(str.components(separatedBy: "BEGIN:VEVENT").dropFirst())
         
         var text: String = ""
-        var startDate = Date()
-        var endDate = Date()
+        var startDate = Date(timeIntervalSinceReferenceDate: 0)
+        var endDate = Date(timeIntervalSinceReferenceDate: 0)
         var location: String = ""
         var description: String = ""
         var summary: String = ""
         var id: String = ""
+        
+        var check: Int = 0
         
         var iCalLectures: [ICalLecture] = []
         
@@ -39,6 +41,7 @@ struct ICalResponseParser {
                     if let date = dateFormatter.date(from: text) {//Date?を除外
                         startDate = date
                     }
+                    check += 1
                     
                 } else if line.hasPrefix("DTEND") { // -> true
                     text = "\(line)"
@@ -50,6 +53,7 @@ struct ICalResponseParser {
                     if let date = dateFormatter.date(from: text) {
                         endDate = date
                     }
+                    check += 1
                     
                 } else if line.hasPrefix("LOCATION") { // -> true
                     location = "\(line)"
@@ -62,13 +66,15 @@ struct ICalResponseParser {
                 } else if line.hasPrefix("SUMMARY") { // -> true
                     summary = "\(line)"
                     summary = summary.replacingOccurrences(of:"SUMMARY:", with:"")
+                    check += 1
                     
                 } else if line.hasPrefix("UID") { // -> true
                     id = "\(line)"
                     id = id.replacingOccurrences(of:"UID:", with:"")
                     id = id.replacingOccurrences(of:"@ocw.titech.ac.jp", with:"")
+                    check += 1
                     
-                } else if line.hasPrefix("END:VEVENT") { // -> true
+                } else if line.hasPrefix("END:VEVENT"), check == 4 { // -> true
                     iCalLectures.append(
                         ICalLecture(
                             id: id,
@@ -79,6 +85,15 @@ struct ICalResponseParser {
                             location: location
                         )
                     )
+                    text = ""
+                    startDate = Date(timeIntervalSinceReferenceDate: 0)
+                    endDate = Date(timeIntervalSinceReferenceDate: 0)
+                    location = ""
+                    description = ""
+                    summary = ""
+                    id = ""
+                    
+                    check = 0
                 }
             }
         }

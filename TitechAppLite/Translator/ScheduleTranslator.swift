@@ -8,15 +8,15 @@
 
 import Foundation
 
+extension Date {
+    func beginningOfDay() -> Date {
+        let calendar = Calendar(identifier: .gregorian)
+        return calendar.startOfDay(for: self)
+    }
+}
+
 struct ScheduleTranslator {
     static func translate( icals: [ICalLecture]) -> [ICalLectureData] {
-        func dateFormat(date: Date) -> String {
-            let f = DateFormatter()
-            f.timeZone = TimeZone(identifier: "Asia/Tokyo")
-            f.dateStyle = .long
-            f.timeStyle = .none
-            return f.string(from: date)
-         }
         
         var translatedLectures: [ICalLectureData] = []
         
@@ -27,22 +27,19 @@ struct ScheduleTranslator {
             $0.startDate < $1.startDate
         }
         
-        let today = Date()
-        
-        for i in 1..<120 {
+        let today = Date().beginningOfDay()
+        for i in 0..<120 {
             let modifiedDate = Calendar.current.date(byAdding: .day, value: i, to: today)!
             translatedLectures.append(
                 ICalLectureData(date: modifiedDate, lectures: [])
             )
         }
         
-        
-        
-        
         for lecture in sortedICals {
-            if let unwrappedPreDate = preDate, dateFormat(date: unwrappedPreDate) != dateFormat(date: lecture.startDate){
-                if let i = translatedLectures.firstIndex(where: {dateFormat(date: $0.date) == dateFormat(date: unwrappedPreDate)}) {
-                    translatedLectures[i] = ICalLectureData(date: unwrappedPreDate, lectures: lectureArray)
+            if let unwrappedPreDate = preDate, unwrappedPreDate.beginningOfDay() != lecture.startDate.beginningOfDay() {
+                let elapsedDays = Calendar.current.dateComponents([.day], from: today, to: unwrappedPreDate).day!
+                if elapsedDays > 0 {
+                    translatedLectures[elapsedDays] = ICalLectureData(date: unwrappedPreDate, lectures: lectureArray)
                 }
                 lectureArray = [ICalLecture]()
             }
@@ -50,12 +47,9 @@ struct ScheduleTranslator {
             preDate = lecture.startDate
         }
         if let unwrappedPreDate = preDate {
-            translatedLectures.append(
-            ICalLectureData(date: unwrappedPreDate, lectures: lectureArray)
-            )
+            let elapsedDays = Calendar.current.dateComponents([.day], from: today, to: unwrappedPreDate).day!
+            translatedLectures[elapsedDays] = ICalLectureData(date: unwrappedPreDate, lectures: lectureArray)
         }
-        print(translatedLectures)
         return translatedLectures
     }
 }
-
