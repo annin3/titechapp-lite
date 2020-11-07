@@ -16,15 +16,13 @@ struct ICalResponseParser {
         
         let arr = Array(str.components(separatedBy: "BEGIN:VEVENT").dropFirst())
         
-        var text: String = ""
-        var startDate = Date(timeIntervalSinceReferenceDate: 0)
-        var endDate = Date(timeIntervalSinceReferenceDate: 0)
-        var location: String = ""
-        var description: String = ""
-        var summary: String = ""
-        var id: String = ""
-        
-        var check: Int = 0
+        var text: String?
+        var startDate: Date?
+        var endDate: Date?
+        var location: String?
+        var description: String?
+        var summary: String?
+        var id: String?
         
         var iCalLectures: [ICalLecture] = []
         
@@ -33,67 +31,62 @@ struct ICalResponseParser {
                 line, stop in
                 if line.hasPrefix("DTSTART") { // -> true
                     text = "\(line)"
-                    text = text.replacingOccurrences(of:"DTSTART;TZID=Asia/Tokyo:", with:"")
+                        .replacingOccurrences(of:"DTSTART;TZID=Asia/Tokyo:", with:"")
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
                     dateFormatter.dateFormat = "yyyyMMdd'T'HHmmss"
-                    if let date = dateFormatter.date(from: text) {//Date?を除外
-                        startDate = date
-                    }
-                    check += 1
+                    guard let unwrappedText = text else { return }
+                    startDate = dateFormatter.date(from: unwrappedText)
                     
                 } else if line.hasPrefix("DTEND") { // -> true
                     text = "\(line)"
-                    text = text.replacingOccurrences(of:"DTEND;TZID=Asia/Tokyo:", with:"")
+                        .replacingOccurrences(of:"DTEND;TZID=Asia/Tokyo:", with:"")
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
                     dateFormatter.dateFormat = "yyyyMMdd'T'HHmmss"
-                    if let date = dateFormatter.date(from: text) {
-                        endDate = date
-                    }
-                    check += 1
+                    guard let unwrappedText = text else { return }
+                    endDate = dateFormatter.date(from: unwrappedText)
                     
                 } else if line.hasPrefix("LOCATION") { // -> true
                     location = "\(line)"
-                    location = location.replacingOccurrences(of:"LOCATION:", with:"")
+                        .replacingOccurrences(of:"LOCATION:", with:"")
                     
                 } else if line.hasPrefix("DESCRIPTION") { // -> true
                     description = "\(line)"
-                    description = description.replacingOccurrences(of:"DESCRIPTION:", with:"")
+                        .replacingOccurrences(of:"DESCRIPTION:", with:"")
                     
                 } else if line.hasPrefix("SUMMARY") { // -> true
                     summary = "\(line)"
-                    summary = summary.replacingOccurrences(of:"SUMMARY:", with:"")
-                    check += 1
+                        .replacingOccurrences(of:"SUMMARY:", with:"")
                     
                 } else if line.hasPrefix("UID") { // -> true
                     id = "\(line)"
-                    id = id.replacingOccurrences(of:"UID:", with:"")
-                    id = id.replacingOccurrences(of:"@ocw.titech.ac.jp", with:"")
-                    check += 1
+                        .replacingOccurrences(of:"UID:", with:"")
+                        .replacingOccurrences(of:"@ocw.titech.ac.jp", with:"")
                     
-                } else if line.hasPrefix("END:VEVENT"), check == 4 { // -> true
+                } else if line.hasPrefix("END:VEVENT") { // -> true
+                    guard let unwrappedId = id, let unwrappedStartDate = startDate, let unwrappedEndDate = endDate, let unwrappedSummary = summary, let unwrappedDescription = description, let unwrappedLocation = location else {
+                        return
+                    }
                     iCalLectures.append(
                         ICalLecture(
-                            id: id,
-                            startDate: startDate,
-                            endDate: endDate,
-                            summary: summary,
-                            description: description,
-                            location: location
+                            id: unwrappedId,
+                            startDate: unwrappedStartDate,
+                            endDate: unwrappedEndDate,
+                            summary: unwrappedSummary,
+                            description: unwrappedDescription,
+                            location: unwrappedLocation
                         )
                     )
-                    text = ""
-                    startDate = Date(timeIntervalSinceReferenceDate: 0)
-                    endDate = Date(timeIntervalSinceReferenceDate: 0)
-                    location = ""
-                    description = ""
-                    summary = ""
-                    id = ""
-                    
-                    check = 0
+                    text = nil
+                    startDate = nil
+                    endDate = nil
+                    location = nil
+                    description = nil
+                    summary = nil
+                    id = nil
                 }
             }
         }
