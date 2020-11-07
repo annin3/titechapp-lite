@@ -30,7 +30,7 @@ struct ICalResponseParser {
             lecture.enumerateLines {
                 line, stop in
                 if line.hasPrefix("DTSTART") { // -> true
-                    text = "\(line)"
+                    text = line
                         .replacingOccurrences(of:"DTSTART;TZID=Asia/Tokyo:", with:"")
                     
                     let dateFormatter = DateFormatter()
@@ -40,7 +40,7 @@ struct ICalResponseParser {
                     startDate = dateFormatter.date(from: unwrappedText)
                     
                 } else if line.hasPrefix("DTEND") { // -> true
-                    text = "\(line)"
+                    text = line
                         .replacingOccurrences(of:"DTEND;TZID=Asia/Tokyo:", with:"")
                     
                     let dateFormatter = DateFormatter()
@@ -50,24 +50,24 @@ struct ICalResponseParser {
                     endDate = dateFormatter.date(from: unwrappedText)
                     
                 } else if line.hasPrefix("LOCATION") { // -> true
-                    location = "\(line)"
+                    location = line
                         .replacingOccurrences(of:"LOCATION:", with:"")
                     
                 } else if line.hasPrefix("DESCRIPTION") { // -> true
-                    description = "\(line)"
+                    description = line
                         .replacingOccurrences(of:"DESCRIPTION:", with:"")
                     
                 } else if line.hasPrefix("SUMMARY") { // -> true
-                    summary = "\(line)"
+                    summary = line
                         .replacingOccurrences(of:"SUMMARY:", with:"")
                     
                 } else if line.hasPrefix("UID") { // -> true
-                    id = "\(line)"
+                    id = line
                         .replacingOccurrences(of:"UID:", with:"")
                         .replacingOccurrences(of:"@ocw.titech.ac.jp", with:"")
                     
                 } else if line.hasPrefix("END:VEVENT") { // -> true
-                    guard let unwrappedId = id, let unwrappedStartDate = startDate, let unwrappedEndDate = endDate, let unwrappedSummary = summary, let unwrappedDescription = description, let unwrappedLocation = location else {
+                    guard let unwrappedId = id, let unwrappedStartDate = startDate, let unwrappedEndDate = endDate, let unwrappedSummary = summary else {
                         return
                     }
                     iCalLectures.append(
@@ -76,8 +76,8 @@ struct ICalResponseParser {
                             startDate: unwrappedStartDate,
                             endDate: unwrappedEndDate,
                             summary: unwrappedSummary,
-                            description: unwrappedDescription,
-                            location: unwrappedLocation
+                            description: description ?? "",
+                            location: location ?? ""
                         )
                     )
                     text = nil
