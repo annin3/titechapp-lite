@@ -8,16 +8,6 @@
 
 import Foundation
 
-struct ICalLecture: Identifiable {
-    let id: String
-    let startDate: Date
-    let endDate: Date
-    let summary: String
-    let description: String
-    let location: String
-}
-
-
 struct ICalResponseParser {
     static func parse (data: Data) -> [ICalLecture] {
         guard let str = String(data: data, encoding: .utf8) else {

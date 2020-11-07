@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1502721F253AC2B200F3D37A /* ICalResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502721E253AC2B200F3D37A /* ICalResponseParser.swift */; };
+		15136E7A2555325D0016B8FA /* ICalLectureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15136E792555325D0016B8FA /* ICalLectureData.swift */; };
+		15136E7D255532970016B8FA /* ICalLecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15136E7C255532970016B8FA /* ICalLecture.swift */; };
 		153A7F6C25285BE700FF96BB /* LectureListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A7F6B25285BE700FF96BB /* LectureListViewModel.swift */; };
-		153A7F7225286BFF00FF96BB /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A7F7125286BFF00FF96BB /* Lecture.swift */; };
-		153A7F762528702500FF96BB /* LectureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A7F752528702500FF96BB /* LectureData.swift */; };
 		15A9540925036484002D26E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540825036484002D26E3 /* AppDelegate.swift */; };
 		15A9540B25036484002D26E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540A25036484002D26E3 /* SceneDelegate.swift */; };
 		15A9540D25036484002D26E3 /* LectureRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540C25036484002D26E3 /* LectureRow.swift */; };
@@ -24,9 +24,9 @@
 
 /* Begin PBXFileReference section */
 		1502721E253AC2B200F3D37A /* ICalResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICalResponseParser.swift; sourceTree = "<group>"; };
+		15136E792555325D0016B8FA /* ICalLectureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICalLectureData.swift; sourceTree = "<group>"; };
+		15136E7C255532970016B8FA /* ICalLecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICalLecture.swift; sourceTree = "<group>"; };
 		153A7F6B25285BE700FF96BB /* LectureListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListViewModel.swift; sourceTree = "<group>"; };
-		153A7F7125286BFF00FF96BB /* Lecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
-		153A7F752528702500FF96BB /* LectureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureData.swift; sourceTree = "<group>"; };
 		15A9540525036484002D26E3 /* TitechAppLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TitechAppLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A9540825036484002D26E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A9540A25036484002D26E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,8 +80,8 @@
 		153A7F6F25286BDC00FF96BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				153A7F7125286BFF00FF96BB /* Lecture.swift */,
-				153A7F752528702500FF96BB /* LectureData.swift */,
+				15136E792555325D0016B8FA /* ICalLectureData.swift */,
+				15136E7C255532970016B8FA /* ICalLecture.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,10 +210,10 @@
 				15A9541D25037125002D26E3 /* LectureList.swift in Sources */,
 				15A9540925036484002D26E3 /* AppDelegate.swift in Sources */,
 				15DFAA32254D0EF800B6B128 /* ScheduleTranslator.swift in Sources */,
-				153A7F762528702500FF96BB /* LectureData.swift in Sources */,
 				15DBC0F0251F19A60074B713 /* DateRow.swift in Sources */,
+				15136E7D255532970016B8FA /* ICalLecture.swift in Sources */,
+				15136E7A2555325D0016B8FA /* ICalLectureData.swift in Sources */,
 				15A9540B25036484002D26E3 /* SceneDelegate.swift in Sources */,
-				153A7F7225286BFF00FF96BB /* Lecture.swift in Sources */,
 				1502721F253AC2B200F3D37A /* ICalResponseParser.swift in Sources */,
 				15A9540D25036484002D26E3 /* LectureRow.swift in Sources */,
 				153A7F6C25285BE700FF96BB /* LectureListViewModel.swift in Sources */,

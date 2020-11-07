@@ -8,16 +8,6 @@
 
 import Foundation
 
-struct ICalLectureData {
-    var date: Date
-    var lectures: [ICalLecture]
-}
-extension ICalLectureData: Identifiable {
-    var id: Date {
-        date
-    }
-}
-
 struct ScheduleTranslator {
     static func translate( icals: [ICalLecture]) -> [ICalLectureData] {
         func dateFormat(date: Date) -> String {
@@ -37,12 +27,23 @@ struct ScheduleTranslator {
             $0.startDate < $1.startDate
         }
         
+        let today = Date()
+        
+        for i in 1..<120 {
+            let modifiedDate = Calendar.current.date(byAdding: .day, value: i, to: today)!
+            translatedLectures.append(
+                ICalLectureData(date: modifiedDate, lectures: [])
+            )
+        }
+        
+        
+        
         
         for lecture in sortedICals {
             if let unwrappedPreDate = preDate, dateFormat(date: unwrappedPreDate) != dateFormat(date: lecture.startDate){
-                translatedLectures.append(
-                    ICalLectureData(date: unwrappedPreDate, lectures: lectureArray)
-                )
+                if let i = translatedLectures.firstIndex(where: {dateFormat(date: $0.date) == dateFormat(date: unwrappedPreDate)}) {
+                    translatedLectures[i] = ICalLectureData(date: unwrappedPreDate, lectures: lectureArray)
+                }
                 lectureArray = [ICalLecture]()
             }
             lectureArray.append(lecture)
