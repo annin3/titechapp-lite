@@ -46,6 +46,9 @@ struct LectureList: View {
             }
             .navigationBarTitle("スケジュール", displayMode: .inline)
         }
+        .onAppear {
+            self.viewModel.appear()
+        }
     }
 }
 
