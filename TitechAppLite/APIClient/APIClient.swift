@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import Combine
+
+struct APIClient {
+    let session: URLSession = .shared
+    
+    func fetch(url: URL) -> AnyPublisher<Data, URLError> {
+        session
+            .dataTaskPublisher(for: url)
+            .map { $0.data }
+            .eraseToAnyPublisher()
+    }
+}

@@ -11,6 +11,7 @@
 		15136E7A2555325D0016B8FA /* ICalLectureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15136E792555325D0016B8FA /* ICalLectureData.swift */; };
 		15136E7D255532970016B8FA /* ICalLecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15136E7C255532970016B8FA /* ICalLecture.swift */; };
 		153A7F6C25285BE700FF96BB /* LectureListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A7F6B25285BE700FF96BB /* LectureListViewModel.swift */; };
+		157C308D25724B1000A3D3D1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157C308C25724B1000A3D3D1 /* APIClient.swift */; };
 		15A9540925036484002D26E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540825036484002D26E3 /* AppDelegate.swift */; };
 		15A9540B25036484002D26E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540A25036484002D26E3 /* SceneDelegate.swift */; };
 		15A9540D25036484002D26E3 /* LectureRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9540C25036484002D26E3 /* LectureRow.swift */; };
@@ -27,6 +28,7 @@
 		15136E792555325D0016B8FA /* ICalLectureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICalLectureData.swift; sourceTree = "<group>"; };
 		15136E7C255532970016B8FA /* ICalLecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICalLecture.swift; sourceTree = "<group>"; };
 		153A7F6B25285BE700FF96BB /* LectureListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListViewModel.swift; sourceTree = "<group>"; };
+		157C308C25724B1000A3D3D1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		15A9540525036484002D26E3 /* TitechAppLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TitechAppLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A9540825036484002D26E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A9540A25036484002D26E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		157C308B25724A9000A3D3D1 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				157C308C25724B1000A3D3D1 /* APIClient.swift */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
 		15A953FC25036484002D26E3 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		15A9540725036484002D26E3 /* TitechAppLite */ = {
 			isa = PBXGroup;
 			children = (
+				157C308B25724A9000A3D3D1 /* APIClient */,
 				15DFAA34254D43F300B6B128 /* Translator */,
 				15027221253AC2B800F3D37A /* ResponseParser */,
 				153A7F6F25286BDC00FF96BB /* Model */,
@@ -212,6 +223,7 @@
 				15DFAA32254D0EF800B6B128 /* ScheduleTranslator.swift in Sources */,
 				15DBC0F0251F19A60074B713 /* DateRow.swift in Sources */,
 				15136E7D255532970016B8FA /* ICalLecture.swift in Sources */,
+				157C308D25724B1000A3D3D1 /* APIClient.swift in Sources */,
 				15136E7A2555325D0016B8FA /* ICalLectureData.swift in Sources */,
 				15A9540B25036484002D26E3 /* SceneDelegate.swift in Sources */,
 				1502721F253AC2B200F3D37A /* ICalResponseParser.swift in Sources */,
