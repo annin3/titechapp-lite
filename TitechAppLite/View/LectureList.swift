@@ -47,7 +47,7 @@ struct LectureList: View {
             .navigationBarTitle("スケジュール", displayMode: .inline)
             .toolbar{
                 ToolbarItem(placement: .automatic) {
-                    NavigationLink("iCalURL", destination: SecondView())
+                    NavigationLink("iCalURL", destination: UrlSetting())
                 }
             }
         }
@@ -57,26 +57,10 @@ struct LectureList: View {
     }
 }
 
-struct SecondView: View {
-    @State private var url = ""
-    var body: some View {
-        VStack{
-            Text("カレンダーのURLを入力して下さい")
-            HStack{
-                TextField("https://", text: $url)
-            }
-            if url.hasPrefix("https://") {
-                
-            } else {
-                Text("正しいURLを入力して下さい")
-            }
-        }
-        
-    }
-}
-
 struct LectureList_Previews: PreviewProvider {
     static var previews: some View {
-        LectureList()
+        Group {
+            LectureList()
+        }
     }
 }
