@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+extension Notification {
+    static let FinishSave = Notification.Name("FinishSave")
+}
+
 struct LectureList: View {
     @ObservedObject var viewModel = LectureListViewModel()
     
@@ -45,8 +49,16 @@ struct LectureList: View {
                 .listRowInsets(EdgeInsets())
             }
             .navigationBarTitle("スケジュール", displayMode: .inline)
+            .toolbar{
+                ToolbarItem(placement: .automatic) {
+                    NavigationLink("iCalURL", destination: UrlSetting())
+                }
+            }
         }
         .onAppear {
+            self.viewModel.appear()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.FinishSave)) { _ in
             self.viewModel.appear()
         }
     }
@@ -54,6 +66,8 @@ struct LectureList: View {
 
 struct LectureList_Previews: PreviewProvider {
     static var previews: some View {
-        LectureList()
+        Group {
+            LectureList()
+        }
     }
 }
