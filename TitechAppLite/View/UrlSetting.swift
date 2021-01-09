@@ -8,18 +8,6 @@
 
 import SwiftUI
 
-extension View {
-    func onReceive(_ name: Notification.Name,
-                   center: NotificationCenter = .default,
-                   object: AnyObject? = nil,
-                   perform action: @escaping (Notification) -> Void) -> some View {
-        self.onReceive(
-            center.publisher(for: name, object: object), perform: action
-        )
-    }
-}
-
-
 struct UrlSetting: View {
     @State private var url = ""
     @State private var isShowSelect = false
@@ -30,11 +18,13 @@ struct UrlSetting: View {
             Text("カレンダーのURLを入力して下さい")
             HStack{
                 TextField("https://", text: $url)
+                    .keyboardType(.URL)
+                    .autocapitalization(.none)
                 Button(action: {
-                    if url.hasPrefix("https://") {
+                    if let url2 = URL(string: url) {
                         self.isShowSelect = false
-                        UserDefaults.standard.set(url, forKey: "Url")
-                        NotificationCenter.default.post(name: NSNotification.FinishSave, object: nil)
+                        UserDefaults.standard.set(url2, forKey: "Url")
+                        NotificationCenter.default.post(name: Notification.FinishSave, object: nil)
                         self.presentation.wrappedValue.dismiss()
                     } else {
                         self.isShowSelect = true
