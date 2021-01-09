@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+extension NSNotification {
+    static let FinishSave = NSNotification.Name("FinishSave")
+}
+
 struct LectureList: View {
     @ObservedObject var viewModel = LectureListViewModel()
     
@@ -52,6 +56,9 @@ struct LectureList: View {
             }
         }
         .onAppear {
+            self.viewModel.appear()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.FinishSave)) { _ in
             self.viewModel.appear()
         }
     }
